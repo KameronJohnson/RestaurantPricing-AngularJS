@@ -6,6 +6,7 @@
     <script src="app.js"></script>
     <script src="controllers/PizzasController.js"></script>
     <script src="controllers/CreamsController.js"></script>
+    <script src="controllers/totalsController.js"></script>
     <script src="services/PizzaFactory.js"></script>
     <script src="services/CreamFactory.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -69,7 +70,9 @@
         <h4>Total Price of Creams:</h4>
         <h2>{{CreamFactory.price}}</h2>
       </div>
-        <h1>{{CreamFactory.price + PizzaFactory.price}}
     </div>
+    <div class="container" ng-controller = "TotalCtrl">
+      <h1>{{CreamFactory.price + PizzaFactory.price}}
+      </div>
   </body>
 </html>
