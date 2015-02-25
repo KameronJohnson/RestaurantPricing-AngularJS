@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="restaurantPricing">
+  <head>
+    <meta charset="UTF-8">
+    <script src="lib/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/PizzasController.js"></script>
+    <script src="controllers/CreamsController.js"></script>
+    <script src="services/PizzaFactory.js"></script>
+    <script src="services/CreamFactory.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Pizzas 'n Cream</title>
+  </head>
+  <body>
+    <div class= "container" ng-controller = "PizzasCtrl">
+
+      <div class= "row">
+        <h3>Enter a Pizza</h3>
+        <form ng-submit="PizzaFactory.addPizza()" class="form-inline" role="form">
+          <div class = "form-group">
+            <input type="text" ng-model="PizzaFactory.pizzaType" placeholder="enter type" required>
+            <button name="submit">Add</button>
+          </div>
+        </form>
+        <br>
+        <form ng-submit = "PizzaFactory.totalPizza()" class="form-inline" role="form">
+          <div class="form-group">
+            <button name="submit">Calculate Pizza Total</button>
+          </div>
+        </form>
+      </div><br>
+      <div class="row">
+
+        <h4 ng-show="pizzas.length"></h4>
+        <ul>
+          <li ng-repeat="item in pizzas">
+            {{item.type}} {{item.price}}
+          </li>
+        </ul>
+        <h4>Total Price of Pizzas:</h4>
+        <h2>{{PizzaFactory.price}}</h2>
+      </div>
+    </div>
+
+    <div class="container" ng-controller = "CreamsCtrl">
+      <div class= "row">
+        <h3>Enter a Cream</h3>
+        <form ng-submit="CreamFactory.addCream()" class="form-inline" role="form">
+          <div class = "form-group">
+            <input type="text" ng-model="CreamFactory.creamType" placeholder="enter type" required>
+            <button name="submit">Add</button>
+          </div>
+        </form>
+        <br>
+        <form ng-submit = "CreamFactory.totalCream()" class="form-inline" role="form">
+          <div class="form-group">
+            <button name="submit">Calculate Cream Total</button>
+          </div>
+        </form>
+      </div><br>
+      <div class="row">
+
+        <h4 ng-show="creams.length"></h4>
+        <ul>
+          <li ng-repeat="item in creams">
+            {{item.type}} {{item.price}}
+          </li>
+        </ul>
+        <h4>Total Price of Creams:</h4>
+        <h2>{{CreamFactory.price}}</h2>
+      </div>
+        <h1>{{CreamFactory.price + PizzaFactory.price}}
+    </div>
+  </body>
+</html>
